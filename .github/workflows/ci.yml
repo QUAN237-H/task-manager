@@ -91,14 +91,15 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      # Prefer service-account JSON (GCP_SA_KEY). Optional WIF if vars.GCP_USE_WIF=true.
       - name: Authenticate to Google Cloud (service account JSON)
-        if: ${{ secrets.GCP_SA_KEY != '' }}
+        if: vars.GCP_USE_WIF != 'true'
         uses: google-github-actions/auth@v2
         with:
           credentials_json: ${{ secrets.GCP_SA_KEY }}
 
       - name: Authenticate to Google Cloud (Workload Identity)
-        if: ${{ secrets.GCP_SA_KEY == '' }}
+        if: vars.GCP_USE_WIF == 'true'
         uses: google-github-actions/auth@v2
         with:
           workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
