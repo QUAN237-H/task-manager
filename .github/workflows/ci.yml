@@ -79,19 +79,17 @@ jobs:
           build-args: |
             VITE_API_URL=
 
-  # Deploys when ENABLE_GCP_DEPLOY=true and GCP secrets are set on the repo
   deploy-gcp:
     name: Deploy to Cloud Run
     runs-on: ubuntu-latest
     needs: [docker]
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push' && vars.ENABLE_GCP_DEPLOY == 'true'
+    if: false
     permissions:
       contents: read
       id-token: write
     steps:
       - uses: actions/checkout@v4
 
-      # Prefer service-account JSON (GCP_SA_KEY). Optional WIF if vars.GCP_USE_WIF=true.
       - name: Authenticate to Google Cloud (service account JSON)
         if: vars.GCP_USE_WIF != 'true'
         uses: google-github-actions/auth@v2

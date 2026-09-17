@@ -128,7 +128,33 @@ On every push to `main`, GitHub Actions:
 2. Typechecks + builds the frontend  
 3. Builds Docker images  
 
-Cloud Run deploy only runs if you set `ENABLE_GCP_DEPLOY=true` and the GCP/DB secrets on the repo. Until then, CI is build + test only.
+There’s also a Cloud Run job in the workflow, but it’s turned off right now (`if: false`). Getting a live link needs a **Google Cloud billing account** (even for the free trial / free tier), and I couldn’t set that up from here. The pipeline and Docker setup are still in the repo so the DevOps part of the brief is covered without a public URL.
+
+### If you do have GCP billing
+
+Turn the job back on in `.github/workflows/ci.yml`, then add these on the repo under **Settings → Secrets and variables → Actions**:
+
+**Variables**
+
+| Name | Example |
+|------|---------|
+| `ENABLE_GCP_DEPLOY` | `true` (only if you also flip the workflow `if` back on) |
+| `GCP_PROJECT_ID` | your GCP project id |
+| `GCP_REGION` | e.g. `europe-west1` |
+| `API_PUBLIC_URL` | `https://task-manager-api-….run.app` |
+| `CORS_ALLOWED_ORIGINS` | `https://task-manager-web-….run.app` |
+
+**Secrets**
+
+| Name | What it is |
+|------|------------|
+| `GCP_SA_KEY` | full JSON key for a deploy service account |
+| `DB_URL` | `jdbc:mysql://HOST:3306/taskmanager?...` |
+| `DB_USER` | MySQL user |
+| `DB_PASSWORD` | MySQL password |
+| `JWT_SECRET` | long random Base64 string |
+
+You’ll also need Cloud Run + Artifact Registry enabled, a MySQL instance the API can reach, and a service account that can push images and deploy Cloud Run.
 
 ---
 
