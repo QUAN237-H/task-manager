@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  /* Login + Refero Super/PostHog: cream paper, ink, yellow action */
+  --background: #f7f4ef;
+  --foreground: #2b2926;
+  --card: #ffffff;
+  --card-foreground: #2b2926;
+  --popover: #ffffff;
+  --popover-foreground: #2b2926;
+  --primary: #f5d76e;
+  --primary-foreground: #2b2926;
+  --secondary: #efeae3;
+  --secondary-foreground: #2b2926;
+  --muted: #efeae3;
+  --muted-foreground: #8a8580;
+  --accent: #fff6d6;
+  --accent-foreground: #2b2926;
+  --destructive: #e34432;
+  --border: #e4ddd4;
+  --input: #e4ddd4;
+  --ring: #2b2926;
+  --radius: 6px;
+
+  --sidebar: #f3efe8;
+  --sidebar-active: #fff1b8;
+  --sidebar-border: #e4ddd4;
+  --ink-soft: #6f6a64;
+
+  font-family: "Plus Jakarta Sans", ui-sans-serif, sans-serif;
+  color: var(--foreground);
+  background: var(--background);
+  line-height: 1.5;
+  font-weight: 500;
+  color-scheme: light;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+  border-color: var(--border);
+  scrollbar-width: thin;
+  scrollbar-color: #c8c2b8 transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #c8c2b8;
+  border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #a39e96;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--background);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-rise {
+  animation: rise-in 0.3s ease-out both;
+}
+
+.animate-toast {
+  animation: toast-in 0.22s ease-out both;
+}
+
+.drawer-backdrop {
+  transition: opacity 0.28s ease;
+}
+
+.drawer-sheet {
+  transition: transform 0.32s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.drawer-backdrop[data-open='false'],
+.drawer-sheet[data-open='false'] {
+  pointer-events: none;
+}
+
+.drawer-backdrop[data-open='false'] {
+  opacity: 0;
+}
+
+.drawer-backdrop[data-open='true'] {
+  opacity: 1;
+}
+
+.drawer-sheet[data-open='false'] {
+  transform: translateY(100%);
+}
+
+.drawer-sheet[data-open='true'] {
+  transform: translateY(0);
+}
