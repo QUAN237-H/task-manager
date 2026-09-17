@@ -112,29 +112,11 @@ Browser / Flutter  →  Spring Boot (/api/...)  →  MySQL
 
 ## Screenshots
 
-Drop images into `docs/screenshots/` and they’ll show up below.
+![Login](screenshots/login-web.png)
 
-### What to capture
+![Dashboard](screenshots/dashboard.png)
 
-1. **Login (or register)** — the auth screen, so they see the entry point.  
-2. **Dashboard / task list** — after login, with a few tasks visible (ideally filter or search in the shot).  
-3. **Mobile** — Flutter app *or* the web UI at phone width; same idea: list of tasks.
-
-Suggested filenames:
-
-- `docs/screenshots/login.png`  
-- `docs/screenshots/dashboard.png`  
-- `docs/screenshots/mobile.png`  
-
-<!-- Uncomment once the files exist:
-
-![Login](docs/screenshots/login.png)
-
-![Dashboard](docs/screenshots/dashboard.png)
-
-![Mobile](docs/screenshots/mobile.png)
-
--->
+![Mobile](screenshots/mobile.png)
 
 ---
 
