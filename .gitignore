@@ -7,7 +7,6 @@ Thumbs.db
 *.iml
 .env
 .env.*
-!.env.example
 
 # Recruitment brief (do not publish)
 *.pdf
